@@ -1,36 +1,29 @@
-# blackbeard-extension
+# GHCP RAG PromptFlow Extension
 
-Blackbeard is a basic example of an agent-based GitHub Copilot Extension. It responds to messages like a pirate, using Copilot's LLM API and special system prompts. This repository should serve as an example of the building blocks of a Copilot Extension. See [index.js](/index.js) for the main logic.
+This repository contains a GitHub Copilot (GHCP) extension that interacts with an existing RAG (Retrieval-Augmented Generation) endpoint using [Azure ML PromptFlow](https://learn.microsoft.com/azure/machine-learning/prompt-flow/overview). The code here demonstrates how to set up a minimal Node.js server, parse incoming requests, and forward them to a PromptFlow endpoint for processing.
 
-> [!NOTE]
-> Copilot Extensions are in public preview and may be subject to change.
-> 
-> All enrolled users with a GitHub Copilot Individual subscription can use Copilot Extensions.
-> For organizations and enterprises with a Copilot Business or Copilot Enterprise subscription, organization owners and enterprise administrators can grant access to Copilot Extensions for use within their company.
+---
 
-## Development
+## Table of Contents
+- [GHCP RAG PromptFlow Extension](#ghcp-rag-promptflow-extension)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
 
-Install dependencies:
+---
 
-```bash
-npm install
-```
+## Overview
+This project serves as a **starting point (skeleton)** for creating further **GitHub Copilot extensions** that call **existing RAG endpoints**. It demonstrates:
+- How to receive and parse requests from GHCP.  
+- How to call a remote PromptFlow endpoint.  
+- How to parse the response and structure output events.  
 
-To run:
+---
 
-```bash
-npm start
-```
+## Features
+- **Express.js Server**: Launches REST endpoints (`GET` and `POST`) to handle requests.  
+- **PromptFlow Integration**: Makes POST calls to a remote RAG endpoint using `fetch`.  
+- **Event Streaming**: Uses utility methods (`createAckEvent`, `createTextEvent`, `createDoneEvent`) to stream events back to clients.  
+- **GitHub Authentication**: Retrieves the GitHub user login via `X-GitHub-Token` header.
 
-or in watch mode:
-
-```bash
-npm run dev
-```
-
-## Documentation
-- [Using Copilot Extensions](https://docs.github.com/en/copilot/using-github-copilot/using-extensions-to-integrate-external-tools-with-copilot-chat)
-- [About building Copilot Extensions](https://docs.github.com/en/copilot/building-copilot-extensions/about-building-copilot-extensions)
-- [Set up process](https://docs.github.com/en/copilot/building-copilot-extensions/setting-up-copilot-extensions)
-- [Communicating with the Copilot platform](https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/configuring-your-copilot-agent-to-communicate-with-the-copilot-platform)
-- [Communicating with GitHub](https://docs.github.com/en/copilot/building-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/configuring-your-copilot-agent-to-communicate-with-github)
+---
